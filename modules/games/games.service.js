@@ -31,7 +31,24 @@ gamesService.addGame = (nombre, minJugadores, maxJugadores, duracionPromedio, fe
     return newGame;
 }
 
-gamesService.updateGame = (id, nombre, minJugadores, maxJugadores, duracionPromedio, fechaAdquisicion, estado) => {
+gamesService.putGame = (id, nombre, minJugadores, maxJugadores, duracionPromedio, fechaAdquisicion, estado) => {
+    for (let i = 0; i < games.length; i++) {
+        if (games[i].id == id) {
+            games[i].nombre = nombre;
+            games[i].minJugadores = minJugadores;
+            games[i].maxJugadores = maxJugadores;
+            games[i].duracionPromedio = duracionPromedio;
+            games[i].fechaAdquisicion = fechaAdquisicion;
+            games[i].estado = estado;
+            
+            return games[i];
+        }
+    }
+    return null;
+}
+
+
+gamesService.patchGame = (id, nombre, minJugadores, maxJugadores, duracionPromedio, fechaAdquisicion, estado) => {
     for (let i = 0; i < games.length; i++) {
         if (games[i].id == id) {
             if (nombre !== undefined) games[i].nombre = nombre;
@@ -41,10 +58,10 @@ gamesService.updateGame = (id, nombre, minJugadores, maxJugadores, duracionProme
             if (fechaAdquisicion !== undefined) games[i].fechaAdquisicion = fechaAdquisicion;
             if (estado !== undefined) games[i].estado = estado;
             
-            return games[i]; // devuelve game modificado
+            return games[i];
         }
     }
-    return null; 
+    return null;
 }
 
 gamesService.deleteGame = (id) => {

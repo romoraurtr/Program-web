@@ -38,12 +38,12 @@ gamesController.addGame = (req, res) => {
     );
 
     res.status(200).send({
-        msg: "Done :)",
+        msg: "Hecho correctamente",
         game: game
     });
 }
 
-gamesController.updateGame = (req, res) => {
+gamesController.putGame = (req, res) => {
     const idGame = req.params.idGame;
     const nombreGame = req.body.nombre;
     const minJugadoresGame = req.body.minJugadores;
@@ -52,20 +52,27 @@ gamesController.updateGame = (req, res) => {
     const fechaGame = req.body.fechaAdquisicion;
     const estadoGame = req.body.estado;
 
-    const game = gamesService.updateGame(
-        idGame, 
-        nombreGame, 
-        minJugadoresGame, 
-        maxJugadoresGame, 
-        duracionGame, 
-        fechaGame, 
-        estadoGame
+    const game = gamesService.putGame(
+        idGame, nombreGame, minJugadoresGame, maxJugadoresGame, duracionGame, fechaGame, estadoGame
     );
 
-    res.status(200).send({
-        msg: "Hecho correctamente",
-        game: game
-    });
+    res.status(200).send({ msg: "Hecho correctamente", game: game });
+}
+
+gamesController.patchGame = (req, res) => {
+    const idGame = req.params.idGame;
+    const nombreGame = req.body.nombre;
+    const minJugadoresGame = req.body.minJugadores;
+    const maxJugadoresGame = req.body.maxJugadores;
+    const duracionGame = req.body.duracionPromedio;
+    const fechaGame = req.body.fechaAdquisicion;
+    const estadoGame = req.body.estado;
+
+    const game = gamesService.patchGame(
+        idGame, nombreGame, minJugadoresGame, maxJugadoresGame, duracionGame, fechaGame, estadoGame
+    );
+
+    res.status(200).send({ msg: "Hecho correctamente", game: game });
 }
 
 gamesController.deleteGame = (req, res) => {
