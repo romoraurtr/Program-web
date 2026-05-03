@@ -52,7 +52,7 @@ gamesService.patchGame = (id, nombre, minJugadores, maxJugadores, duracionPromed
     for (let i = 0; i < games.length; i++) {
         if (games[i].id == id) {
             if (nombre !== undefined) games[i].nombre = nombre;
-            if (minJugadores !== undefined) games[i].minJugadores = minJugadores;
+            if (minJugadores !== undefined) gamesames[i].minJugadores = minJugadores;
             if (maxJugadores !== undefined) games[i].maxJugadores = maxJugadores;
             if (duracionPromedio !== undefined) games[i].duracionPromedio = duracionPromedio;
             if (fechaAdquisicion !== undefined) games[i].fechaAdquisicion = fechaAdquisicion;
